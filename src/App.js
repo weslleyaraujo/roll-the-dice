@@ -53,12 +53,12 @@ class App extends Component {
 
   renderDice(size) {
     switch(size) {
-      case 'One': return <Dices.One />
-      case 'Two': return <Dices.Two />
-      case 'Three': return <Dices.Three />
-      case 'Four': return <Dices.Four />
-      case 'Five': return <Dices.Five />
-      case 'Six': return <Dices.Six />
+      case 'One': return <Dices.One key={size} />
+      case 'Two': return <Dices.Two key={size} />
+      case 'Three': return <Dices.Three key={size} />
+      case 'Four': return <Dices.Four key={size} />
+      case 'Five': return <Dices.Five key={size} />
+      case 'Six': return <Dices.Six key={size} />
     }
   }
 
@@ -67,27 +67,24 @@ class App extends Component {
     return (
       <Flex
         className="App"
+        column={true}
+        justify="space-around"
         >
-        <Flex>
-          <Box
-            p={1}>
-            <h1>Roll the react dice</h1>
-            <p>size: {size}</p>
-            <form onSubmit={this.onFormSubmit.bind(this)}>
-              <select ref="size">
-                {arrayOf(6).map(x => <option value={x}>{x} </option>)}
-              </select>
-              <button type="submit">Roll it</button>
-            </form>
-          </Box>
-        </Flex>
-        <Flex>
-
-          <Box
-            p={1}>
-            {dices.map(x => this.renderDice(x))}
-          </Box>
-        </Flex>
+        <Box
+          className="App--content"
+          p={1}>
+          <h1>Roll the react dice</h1>
+          <form onSubmit={this.onFormSubmit.bind(this)}>
+            <select ref="size">
+              {arrayOf(6).map(x => <option value={x}>{x} </option>)}
+            </select>
+            <button type="submit">Roll it</button>
+          </form>
+        </Box>
+        <Box
+          p={1}>
+          {dices.map(x => this.renderDice(x))}
+        </Box>
       </Flex>
     );
   }
