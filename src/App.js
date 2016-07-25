@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import { Flex, Box } from 'reflexbox';
 
-import Dice from './components/Dice/Dice';
-import Dot from './components/Dot/Dot';
+import {
+  One,
+  Two,
+  Three,
+  Four,
+  Five,
+  Six,
+} from './components/Dices/Dices';
 import './App.css';
 
 const ui = (state = {
@@ -55,132 +61,23 @@ class App extends Component {
         justify="space-around"
 
         >
-        <Box>
+        <Box
+          p={1}>
           <h1>Roll the react dice</h1>
           <p>size: {size}</p>
         </Box>
         <form onSubmit={this.onFormSubmit.bind(this)}>
           <input ref="size" type="number" max={4} />
         </form>
-
-        {/* 1 */}
-        <Dice
-          align="center"
-          justify="center"
-          >
-          <Dot />
-        </Dice>
-
-        {/* 2 */}
-        <Dice
-          justify="space-between"
-          >
-          <Flex
-            align="flex-start"
-            justify="space-between"
-          >
-            <Dot />
-          </Flex>
-          <Flex
-            align="flex-end"
-          >
-            <Dot />
-          </Flex>
-        </Dice>
-
-        {/* 3 */}
-        <Dice
-          justify="space-between"
-          >
-          <Flex
-            align="flex-end"
-            justify="space-between"
-          >
-            <Dot />
-          </Flex>
-          <Flex align="center">
-            <Dot />
-          </Flex>
-          <Flex align="flex-start">
-            <Dot />
-          </Flex>
-        </Dice>
-
-        {/* 4 */}
-        <Dice
-          justify="space-between"
-          >
-          <Flex
-            align="flex-start"
-            column={true}
-            justify="space-between"
-          >
-            <Dot />
-            <Dot />
-          </Flex>
-          <Flex
-            align="flex-start"
-            column={true}
-            justify="space-between"
-          >
-            <Dot />
-            <Dot />
-          </Flex>
-        </Dice>
-
-        {/* 5 */}
-        <Dice
-          justify="space-between"
-          >
-          <Flex
-            align="flex-start"
-            column={true}
-            justify="space-between"
-          >
-            <Dot />
-            <Dot />
-          </Flex>
-          <Flex
-            align="center"
-            column={true}
-            justify="center"
-          >
-            <Dot />
-          </Flex>
-          <Flex
-            align="flex-start"
-            column={true}
-            justify="space-between"
-          >
-            <Dot />
-            <Dot />
-          </Flex>
-        </Dice>
-
-        {/* 6 */}
-        <Dice
-          justify="space-between"
-          >
-          <Flex
-            align="flex-start"
-            column={true}
-            justify="space-between"
-          >
-            <Dot />
-            <Dot />
-            <Dot />
-          </Flex>
-          <Flex
-            align="flex-start"
-            column={true}
-            justify="space-between"
-          >
-            <Dot />
-            <Dot />
-            <Dot />
-          </Flex>
-        </Dice>
-
+        <Box
+          p={1}>
+          <One />
+          <Two />
+          <Three />
+          <Four />
+          <Five />
+          <Six />
+        </Box>
       </Flex>
     );
   }
