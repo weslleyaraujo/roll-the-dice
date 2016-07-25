@@ -1,19 +1,67 @@
 import React, { Component } from 'react';
-import { Flex } from 'reflexbox';
+import { Flex, Box } from 'reflexbox';
 
 import Dice from './components/Dice/Dice';
 import Dot from './components/Dot/Dot';
-import { arrayOf } from './utils';
 import './App.css';
 
+const ui = (state = {
+  size: 0,
+}, { type, payload }) => {
+  switch(type) {
+    case 'CHANGE_VALUE':
+      return {
+        ...state,
+        size: payload.size,
+      }
+    default:
+      return state;
+  }
+}
+
+const dices = (state = [], { type, payload }) => {
+  switch(type) {
+    default:
+      return state;
+  }
+}
+
 class App extends Component {
+  state = {
+    ui: ui(undefined, {}),
+    dices: dices(undefined, {}),
+  }
+
+  onFormSubmit(event) {
+    event.preventDefault();
+    const size = this.refs.size.value;
+
+    this.setState({
+      ui: ui(this.state.ui, {
+        type: 'CHANGE_VALUE',
+        payload: {
+          size,
+        },
+      }),
+    });
+  }
+
   render() {
+    const { size } = this.state.ui;
+
     return (
       <Flex
         className="App"
         justify="space-around"
 
         >
+        <Box>
+          <h1>Roll the react dice</h1>
+          <p>size: {size}</p>
+        </Box>
+        <form onSubmit={this.onFormSubmit.bind(this)}>
+          <input ref="size" type="number" max={4} />
+        </form>
 
         {/* 1 */}
         <Dice
@@ -33,7 +81,9 @@ class App extends Component {
           >
             <Dot />
           </Flex>
-          <Flex align="flex-end">
+          <Flex
+            align="flex-end"
+          >
             <Dot />
           </Flex>
         </Dice>
@@ -62,7 +112,7 @@ class App extends Component {
           >
           <Flex
             align="flex-start"
-            column={1}
+            column={true}
             justify="space-between"
           >
             <Dot />
@@ -70,7 +120,7 @@ class App extends Component {
           </Flex>
           <Flex
             align="flex-start"
-            column={1}
+            column={true}
             justify="space-between"
           >
             <Dot />
@@ -84,7 +134,7 @@ class App extends Component {
           >
           <Flex
             align="flex-start"
-            column={1}
+            column={true}
             justify="space-between"
           >
             <Dot />
@@ -92,14 +142,14 @@ class App extends Component {
           </Flex>
           <Flex
             align="center"
-            column={1}
+            column={true}
             justify="center"
           >
             <Dot />
           </Flex>
           <Flex
             align="flex-start"
-            column={1}
+            column={true}
             justify="space-between"
           >
             <Dot />
@@ -113,7 +163,7 @@ class App extends Component {
           >
           <Flex
             align="flex-start"
-            column={1}
+            column={true}
             justify="space-between"
           >
             <Dot />
@@ -122,7 +172,7 @@ class App extends Component {
           </Flex>
           <Flex
             align="flex-start"
-            column={1}
+            column={true}
             justify="space-between"
           >
             <Dot />
