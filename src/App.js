@@ -81,10 +81,12 @@ class App extends Component {
             <button style={{ marginLeft: 20, }} type="submit" className="App--form-control">Roll it</button>
           </form>
         </Box>
-        <Box
-          p={1}>
+        <Flex
+          p={1}
+          justify="space-around"
+          >
           {dices.map((x, i) => this.renderDice(x, i))}
-        </Box>
+        </Flex>
       </Flex>
     );
   }
