@@ -15,3 +15,15 @@
   border-radius: 4px;
   text-align: center;
 }
+
+.App--repo {
+  text-decoration: none;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  color: #16193B;
+}
+
+.App--repo:hover {
+  text-decoration: underline;
+}

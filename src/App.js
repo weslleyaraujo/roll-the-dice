@@ -70,6 +70,7 @@ class App extends Component {
         column={true}
         justify="space-around"
         >
+        <a className="App--repo" href="https://github.com/weslleyaraujo/roll-the-dice">github</a>
         <Box
           className="App--content"
           p={1}>
