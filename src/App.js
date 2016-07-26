@@ -75,10 +75,10 @@ class App extends Component {
           p={1}>
           <h1>Roll the react dice</h1>
           <form onSubmit={this.onFormSubmit.bind(this)}>
-            <select ref="size">
+            <select className="App--form-control" ref="size">
               {arrayOf(6).map(x => <option value={x} key={x}>{x} </option>)}
             </select>
-            <button type="submit">Roll it</button>
+            <button style={{ marginLeft: 20, }} type="submit" className="App--form-control">Roll it</button>
           </form>
         </Box>
         <Box
