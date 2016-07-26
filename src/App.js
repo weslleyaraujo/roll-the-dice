@@ -24,6 +24,14 @@ const reducer = (state = initialState, { type, payload }) => {
   }
 }
 
+function renderDice(size, key) {
+  const DiceSize = Dices[size];
+
+  return (
+    <DiceSize key={key} />
+  );
+}
+
 class App extends Component {
 
   state = {
@@ -51,17 +59,6 @@ class App extends Component {
     }));
   }
 
-  renderDice(size, key) {
-    switch(size) {
-      case 'One': return <Dices.One key={key} />
-      case 'Two': return <Dices.Two key={key} />
-      case 'Three': return <Dices.Three key={key} />
-      case 'Four': return <Dices.Four key={key} />
-      case 'Five': return <Dices.Five key={key} />
-      case 'Six': return <Dices.Six key={key} />
-    }
-  }
-
   render() {
     const { size, dices } = this.state;
     return (
@@ -86,7 +83,7 @@ class App extends Component {
           p={1}
           justify="space-around"
           >
-          {dices.map((x, i) => this.renderDice(x, i))}
+          {dices.map(renderDice)}
         </Flex>
       </Flex>
     );
