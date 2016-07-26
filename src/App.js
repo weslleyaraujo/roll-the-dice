@@ -51,14 +51,14 @@ class App extends Component {
     }));
   }
 
-  renderDice(size) {
+  renderDice(size, key) {
     switch(size) {
-      case 'One': return <Dices.One key={size} />
-      case 'Two': return <Dices.Two key={size} />
-      case 'Three': return <Dices.Three key={size} />
-      case 'Four': return <Dices.Four key={size} />
-      case 'Five': return <Dices.Five key={size} />
-      case 'Six': return <Dices.Six key={size} />
+      case 'One': return <Dices.One key={key} />
+      case 'Two': return <Dices.Two key={key} />
+      case 'Three': return <Dices.Three key={key} />
+      case 'Four': return <Dices.Four key={key} />
+      case 'Five': return <Dices.Five key={key} />
+      case 'Six': return <Dices.Six key={key} />
     }
   }
 
@@ -76,14 +76,14 @@ class App extends Component {
           <h1>Roll the react dice</h1>
           <form onSubmit={this.onFormSubmit.bind(this)}>
             <select ref="size">
-              {arrayOf(6).map(x => <option value={x}>{x} </option>)}
+              {arrayOf(6).map(x => <option value={x} key={x}>{x} </option>)}
             </select>
             <button type="submit">Roll it</button>
           </form>
         </Box>
         <Box
           p={1}>
-          {dices.map(x => this.renderDice(x))}
+          {dices.map((x, i) => this.renderDice(x, i))}
         </Box>
       </Flex>
     );
